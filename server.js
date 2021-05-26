@@ -1,5 +1,3 @@
-// eslint-disable-next-line no-redeclare
-/* global require, process */
 
 const fs = require('fs');
 const path = require('path');

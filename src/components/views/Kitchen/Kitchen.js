@@ -15,7 +15,7 @@ const orderData = [
     id: '1',
     table: 2,
     status: 'ready',
-    order: 'vegan',
+    order: 234,
   },
   {
     id: '2',
@@ -27,13 +27,19 @@ const orderData = [
     id: '3',
     table: 'delivery',
     status: 'ready',
-    order: 'extra fries',
+    order: 123,
   },
   {
     id: '4',
     table: 7,
     status: 'ready',
-    order: 'no onion',
+    order: 345,
+  },
+  {
+    id: '5',
+    table: 3,
+    status: 'ready',
+    order: 456,
   },
 ];
 
