@@ -17,7 +17,7 @@
   - tabela z listą rezerwacji oraz wydarzeń
       - każda kolumna będzie jednym stolikiem
       - każdy wiersz będzie blokiem 30 min.
-      - ma przypominać widoć tygodnia w kalendarzu Google, gdzie w kolumnach zamiast dni są różne stoliki
+      - ma przypominać widok tygodnia w kalendarzu Google, gdzie w kolumnach zamiast dni są różne stoliki
       - po kliknięciu rezerwacji lub eventu przechodzimy na stronę szczegółów
 
 - `/tables/booking/:id`
@@ -50,7 +50,7 @@
 # Widok kuchni
 
 -`/kitchen`
-  - wyświetlać listę zamówień w kolejności ich słożenia
+  - wyświetlać listę zamówień w kolejności ich złożenia
   - lista musi zawierać:
     - numer stolika lub zamówienia zdalnego
     - pełne informacje dotyczące zamówionych dań
