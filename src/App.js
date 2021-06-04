@@ -12,12 +12,13 @@ import WaiterOrder from '../src/components/views/WaiterOrder/WaiterOrder';
 import { StylesProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import store from './redux/store';
 
 const theme = createMuiTheme({
   palette: {
-    primary: { main: '#2B4C6F' },
+    primary:
+    { main: '#2B4C6F' },
     //secondary: { main: '#11cb5f' },
   },
 });
@@ -25,7 +26,7 @@ const theme = createMuiTheme({
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter basename={'/'}>
+      <BrowserRouter>
         <StylesProvider injectFirst>
           <ThemeProvider theme={theme}>
             <MainLayout>

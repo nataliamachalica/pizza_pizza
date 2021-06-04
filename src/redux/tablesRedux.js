@@ -13,16 +13,15 @@ const createActionName = name => `app/${reducerName}/${name}`;
 const FETCH_START = createActionName('FETCH_START');
 const FETCH_SUCCESS = createActionName('FETCH_SUCCESS');
 const FETCH_ERROR = createActionName('FETCH_ERROR');
-const FETCH_CHANGE_STATUS = createActionName('FETCH_CHANGE_STATUS');
+const FETCH_STATUS = createActionName('FETCH_STATUS');
 
 /* action creators */
 export const fetchStarted = payload => ({ payload, type: FETCH_START });
 export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
 export const fetchError = payload => ({ payload, type: FETCH_ERROR });
-export const fetchChangeStatus = (table, status) => ({ table, status, type: FETCH_CHANGE_STATUS });
+export const fetchStatus = payload => ({ payload, type: FETCH_STATUS });
 
 /* thunk creators */
-
 export const fetchFromAPI = () => {
   return (dispatch, getState) => {
     dispatch(fetchStarted());
@@ -38,14 +37,13 @@ export const fetchFromAPI = () => {
   };
 };
 
-export const fetchChangeStatusFromApi = (table, status) => {
+export const fetchStatusFromApi = (row) => {
   return (dispatch) => {
-    dispatch(fetchStarted());
 
     Axios
-      .get(`${api.url}/${api.tables}`)
-      .then( () => {
-        dispatch(fetchChangeStatus(table, status));
+      .get(`${api.url}/api/${api.tables}/${row.id}`, row)
+      .then(res => {
+        dispatch(fetchStatus(res.data));
       })
       .catch(err => {
         dispatch(fetchError(err.message || true));
@@ -84,14 +82,16 @@ export default function reducer(statePart = [], action = {}) {
         },
       };
     }
-    case FETCH_CHANGE_STATUS: {
+    case FETCH_STATUS: {
       return {
         ...statePart,
-        loading: {
-          active: false,
-          error: false,
-        },
-        data: statePart.data.map (order => order.table === action.table ? {...order, status: action.status} : order),
+        data: statePart.data.map((item) => {
+          if(item.id === action.payload.id){
+            return action.payload;
+          } else {
+            return item;
+          }
+        }),
       };
     }
     default:
